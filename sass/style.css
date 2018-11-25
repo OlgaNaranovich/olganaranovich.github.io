@@ -1,0 +1,148 @@
+@font-face {
+  font-family: "RobotoRegular";
+  src: url("../fonts/RobotoRegular/RobotoRegular.eot");
+  src: url("../fonts/RobotoRegular/RobotoRegular.eot?#iefix") format("embedded-opentype"), url("../fonts/RobotoRegular/RobotoRegular.ttf") format("truetype");
+  font-style: normal;
+  font-weight: normal; }
+@font-face {
+  font-family: "FontAwesome";
+  src: url("../fonts/FontAwesome/fontawesome-webfont.eot");
+  src: url("../fonts/FontAwesome/fontawesome-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/FontAwesome/fontawesome-webfont.woff") format("woff"), url("../fonts/FontAwesome/fontawesome-webfont.ttf") format("truetype");
+  font-style: normal;
+  font-weight: normal; }
+body {
+  background-color: #9bbf9c;
+  color: #ffffff;
+  font-size: 12px;
+  line-height: 1.5;
+  font-family: "RobotoRegular", "Arial", sans-serif;
+  width: 100%;
+  height: 10vh; }
+  body::before {
+    content: "";
+    background: url(../img/hs-bg.jpg) no-repeat;
+    background-size: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    opacity: 0.15;
+    z-index: -1; }
+  body form {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px; }
+    body form input {
+      display: flex;
+      width: 40%;
+      height: 35px;
+      border: 1px solid #e6e6e6;
+      border-radius: 3px;
+      padding: 5px;
+      font-family: sans-serif;
+      margin-right: 5px;
+      color: #0e4e55;
+      transition: background-color 0s 9999s, color 0s 9999s, outline 0s 9999s;
+      outline: none; }
+      body form input:focus {
+        background-color: #ffffff; }
+      body form input::-webkit-input-placeholder {
+        color: #577886;
+        font-family: sans-serif;
+        font-weight: lighter;
+        text-overflow: ellipsis; }
+      body form input:focus::-webkit-input-placeholder {
+        color: transparent; }
+    body form button {
+      border: none;
+      border-radius: 3px;
+      padding: 0 10px;
+      color: #0e4e55;
+      background-color: #efe8d9;
+      transition: outline 0s 9999s;
+      outline: none; }
+  body .slider {
+    min-height: 350px;
+    margin: 10% auto auto;
+    overflow: hidden;
+    position: relative; }
+    body .slider .cardWrap {
+      display: flex;
+      margin-bottom: 30px;
+      transition: transform 0.2s ease; }
+      body .slider .cardWrap .card {
+        width: 230px;
+        display: inline-block;
+        padding: 30px 10px;
+        min-height: 300px;
+        margin: 0 10px;
+        background-color: #ffffff;
+        color: #666666;
+        text-align: center;
+        user-select: none;
+        border: 1px solid #e6e6e6;
+        border-radius: 3px;
+        position: relative; }
+        body .slider .cardWrap .card a {
+          font-size: 1.2em;
+          color: #3e4a42;
+          text-decoration: underline;
+          line-height: 1.1;
+          width: 90%;
+          overflow: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          position: absolute;
+          top: 10px;
+          left: -1px;
+          padding: 5px 12px;
+          background: #f3e1bc;
+          box-shadow: 0 0 1px #bfa472;
+          transition: all 0.2s ease;
+          border-bottom: 1px solid rgba(0, 0, 0, 0); }
+          body .slider .cardWrap .card a:hover {
+            border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+            white-space: normal; }
+        body .slider .cardWrap .card figure {
+          margin: 10px 0;
+          text-align: center; }
+          body .slider .cardWrap .card figure img {
+            width: 98%;
+            padding: 2px 0; }
+          body .slider .cardWrap .card figure figcaption {
+            padding: 0 5px;
+            word-break: break-all; }
+        body .slider .cardWrap .card .clipInfo {
+          position: absolute;
+          left: 50%;
+          transform: translateX(-50%);
+          bottom: 8%;
+          width: 90%; }
+          body .slider .cardWrap .card .clipInfo span {
+            display: block;
+            text-align: left; }
+            body .slider .cardWrap .card .clipInfo span .fa {
+              margin-right: 5px; }
+    body .slider .dots {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: 0;
+      display: flex; }
+      body .slider .dots .dot {
+        width: 15px;
+        height: 15px;
+        border: 1px solid #ffffff;
+        border-radius: 50%;
+        line-height: 1.5;
+        font-size: 10px;
+        text-align: center;
+        color: #ffffff;
+        background-color: #ffffff;
+        margin: 5px;
+        cursor: pointer; }
+      body .slider .dots .active {
+        background-color: transparent; }
+
+/*# sourceMappingURL=style.css.map */
