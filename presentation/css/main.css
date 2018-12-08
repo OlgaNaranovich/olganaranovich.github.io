@@ -1,0 +1,297 @@
+body .reveal h1, body .reveal h2 {
+	color: #e7ad52;
+}
+
+body .reveal h3, body .reveal h4 {
+	font-family: "Open Sans", "Verdana", sans-serif;
+}
+
+body .reveal h4 {
+	font-size: 25px;
+	color: #e7ad52;
+}
+
+body .reveal section img {
+	border: none;
+	background: transparent;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+}
+
+.reveal a {
+	display: inline-block;
+	font-size: 30px;
+}
+
+.reveal .quote {
+	padding-top: 30px;
+	font-size: 25px;
+}
+
+.reveal .singlethread {
+	color: #45af3b;
+	margin-top: 30px;
+	display: inline-block;
+}
+
+.reveal .code1-wrapper, .reveal .callstack-wrapper {
+	display: inline-block;
+	width: 45%;
+}
+
+.reveal .callstack-wrapper {
+	float: right;
+}
+
+.reveal pre {
+  border: 2px solid #676767;
+  background: #3f3f3f;
+  position: relative;
+}
+
+.reveal .codeBorder-wrap {
+	position: absolute;
+	width: 101%;
+	top: 0px;
+	left: -2px;
+}
+
+.reveal .codeBorder {
+	border: 2px solid #676767;
+	position: absolute;
+	width: 99%;
+}
+
+.reveal .codeBorder1 {
+	top: 30px;
+  height: 78px;
+}
+
+.reveal .codeBorder2 {
+  top: 110px;
+  height: 102px;
+}
+
+.reveal .codeBorder3 {
+  top: 214px;
+  height: 102px;
+}
+
+.reveal .frame {
+	border: 2px solid #676767;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: flex-end;
+  margin: auto;
+}
+
+.reveal .callstack1 {
+	height: 425px;
+	 width: 40%;
+}
+
+.reveal .function {
+	padding-top: 15px;
+}
+
+.reveal .browser-blocked {
+	border: 2px solid #676767;
+}
+
+.reveal figcaption {
+	font-size: 30px;
+	margin: 0 10px;
+}
+
+.reveal .js-component, .reveal .webapi {
+	display: inline-block;
+}
+
+.reveal .webapi, .reveal .queue {
+	float: right;
+ }
+
+.reveal .eloop {
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+	-ms-align-items: center;
+	align-items: center;
+	position: absolute;
+	bottom: 20%;
+	left: 27%;
+}
+
+ .reveal .arrow1 {
+	position: absolute;
+  top: 200px;
+  left: 54%;
+  transform: rotate(-36deg);
+ }
+
+ .reveal .arrow2 {
+	position: absolute;
+	top: 320px;
+  left: 78%;
+  transform: rotate(92deg);
+ }
+
+ .reveal .arrow3 {
+	position: absolute;
+  bottom: 19%;
+  left: 51%;
+  transform: rotate(-155deg);
+}
+
+.reveal .leftPart, .reveal .rightPart {
+	display: inline-block;
+	width: 49%;
+	text-align: left;
+}
+
+.reveal .leftPart .codeBorder4 {
+  height: 30px;
+  top: 26px;
+  width: 75%;
+}
+
+.reveal .leftPart .codeBorder5 {
+  height: 80px;
+  top: 57px;
+  width: 90%;
+}
+
+.reveal .leftPart .codeBorder6 {
+	height: 26px;
+  top: 138px;
+  width: 75%;
+}
+
+.reveal .leftPart .codeBorder7 {
+  top: 57px;
+  height: 55px;
+  width: 59%;
+  left: 138px;
+}
+
+.reveal .leftPart .codeBorder8 {
+  top: 87px;
+  height: 25px;
+  width: 56%;
+  left: 138px;
+}
+
+.reveal .rightPart span, .reveal .leftPart span {
+	font-size: 20px;
+}
+
+.reveal .console {
+  width: 90%;
+  height: 330px;
+  justify-content: flex-start;
+}
+
+.reveal .console-result {
+  display: flex;
+  flex-direction: column;
+  margin: 30px 0;
+}
+
+.reveal .rightPart {
+	float: right;
+}
+
+.reveal .stackWebapis-wrapper {
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+	-ms-align-items: center;
+	justify-content: space-between;
+	margin: 20px 0;
+}
+
+.reveal .callstack2, .reveal .webapis {
+	display: block;
+	width: 200px;
+	margin: 0;
+	text-align: center;
+	position: relative;
+}
+
+.reveal .callstack2 span {
+	display: block;
+	position: absolute;
+	bottom: 5px;
+	left: 50%;
+	transform: translate(-50%);
+  white-space: nowrap;
+}
+
+.reveal .callstack2 .lastFunc {
+	bottom: 35px;
+}
+
+.reveal .webapis {
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+	justify-content: flex-start;
+}
+.reveal .webapis span {
+	padding: 60px 0;
+}
+.reveal .clock {
+  position: absolute;
+  top: 18px;
+  left: 77px;
+}
+
+.reveal .clock .clockHand {
+	position: absolute;
+	top: 90px;
+	left: 30px;
+	width: 2px;
+	height: 15px;
+	background-color: #fff;
+	-webkit-transform-origin-y: 100%;
+	-moz-transform-origin-y: 100%;
+	-ms-transform-origin-y: 100%;
+	-o-transform-origin-y: 100%;
+	transform-origin-y: 100%;
+	-webkit-transform: rotate(0deg);
+	-ms-transform: rotate(0deg);
+	-o-transform: rotate(0deg);
+	transform: rotate(0deg);
+}
+
+.reveal .eloop2 {
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+	-ms-align-items: center;
+	align-items: center;
+}
+
+.reveal .queue2 {
+  display: flex;
+  height: 177px;
+  justify-content: space-between;
+  position: relative;
+}
+
+.reveal .queue2 .cbFunc {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  border: 1px solid #676767;
+  padding: 10px 30px;
+}

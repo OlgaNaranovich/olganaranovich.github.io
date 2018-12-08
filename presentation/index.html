@@ -7,6 +7,7 @@
 	<title>reveal.js</title>
 
 	<link rel="stylesheet" href="css/reveal.css">
+	<link rel="stylesheet" href="css/main.css">
 	<link rel="stylesheet" href="css/theme/night.css">
 
 	<!-- Theme used for syntax highlighting of code -->
@@ -26,8 +27,8 @@
 		<div class="slides">
 			<section data-background-image="./img/Loop-bg.png">
 				<h1>Event Loop</h1>
-				<p>in the JavaScript</p>
-				<span class="fragment fade-up quote">“ JavaScript, unlike a lot of other languages, never blocks.”- <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/EventLoop">MDN web docs</a></span>
+				<span>in the JavaScript</span>
+				<p class="fragment fade-up quote">“ JavaScript, unlike a lot of other languages, never blocks.”- <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/EventLoop">MDN web docs</a></p>
 				<aside class="notes">
 					Hello, my name is Olga Naranovich. My presentation is devoted to Event Loop. But before we talk about the event loop we need to understand  how the JS’s engine works, what happens when JavaScript is executed and what role the event loop plays in JS’s execution.
 					Javascript is capable of Asynchronous operations through the single thread of execution. This means that an event such as a database request can be performed and while the request is being performed other events can still be performed such as a user scrolling or entering data. This is unlike most other languages, which will require the callback to return with its response before executing any following code.
@@ -78,13 +79,13 @@
 								console.log(bar(' Scopes '));
 							</code>
 							<div class="codeBorder-wrap">
-								<div class="codeBorder1 fragment fade-in function" data-fragment-index="3">
+								<div class="fragment fade-in" data-fragment-index="3">
 									<div class="codeBorder codeBorder1 fragment fade-out" data-fragment-index="4"></div>
 								</div>
-								<div class="codeBorder2 fragment fade-in function" data-fragment-index="2">
+								<div class="fragment fade-in" data-fragment-index="2">
 									<div class="codeBorder codeBorder2 fragment fade-out" data-fragment-index="5"></div>
 								</div>
-								<div class="codeBorder3 fragment fade-in function" data-fragment-index="1">
+								<div class="fragment fade-in" data-fragment-index="1">
 									<div class="codeBorder codeBorder3 fragment fade-out" data-fragment-index="6"></div>
 								</div>
 							</div>
@@ -119,7 +120,7 @@
 			</section>
 			<section>
 				<div class="browser-component">
-					<figure class="js">
+					<figure class="js-component">
 						<figcaption>JS runtime engine</figcaption>
 						<img src="img/component-js.png" alt="js">
 					</figure>
@@ -133,7 +134,7 @@
 					</figure>
 					<figure class="fragment fade-in eloop">
 						<figcaption>Event loop</figcaption>
-						<img src="img/component-eloop.png" alt="eloop">
+						<img src="img/eloop-white.png" alt="eloop">
 					</figure>
 					<img src="img/yellow-arrow.png" alt="arrow" class="fragment fade-in arrow1">
 					<img src="img/green-arrow.png" alt="arrow" class="fragment fade-in arrow2">
@@ -206,17 +207,17 @@
 						<div class="frame webapis">
 							<h4>webapis</h4>
 							<span class="fragment fade-in function" data-fragment-index="4">
-								<span class="fragment fade-out" data-fragment-index="7">timer(&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;) cb()</span>
+								<span class="fragment fade-out" data-fragment-index="7">timer (&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;) cb()</span>
 							</span>
 							<span class="fragment fade-in clockParent" data-fragment-index="4">
 								<span class="fragment fade-out clock" data-fragment-index="7">
 									<img src="img/clock-white.png">
-									<span class="clockHand"></span>
+									<div class="clockHand"></div>
 								</span>
 							</span>
 						</div>
 					</div>
-					<figure class="eloop" id="eloop">
+					<figure class="eloop2" id="eloop">
 						<figcaption>Event loop</figcaption>
 						<img id="eloop-img" src="img/eloop-white.png" alt="eloop">
 					</figure>
@@ -290,8 +291,8 @@
 				<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/EventLoop" target="_blank">MDN, Concurrency model and Event Loop</a>
 				<a href="https://www.youtube.com/watch?v=8aGhZQkoFbQ" target="_blank">Philip Roberts: What the heck is the event loop anyway?</a>
 				<a href="https://codeburst.io/what-you-need-to-know-about-the-javascript-event-loop-ee3fc32e59c1" target="_blank">What you need to know about the Javascript event loop?</a>
-				<a href="https://habr.com/company/ruvds/blog/337042/" target="_blank">habr: How JavaScript Works? (part 1)</a>
-				<a href="https://habr.com/company/ruvds/blog/340508/" target="_blank">habr: How JavaScript Works? (part 4)</a>
+				<a href="https://habr.com/company/ruvds/blog/337042/" target="_blank">habr.com: How JavaScript Works? (part 1)</a>
+				<a href="https://habr.com/company/ruvds/blog/340508/" target="_blank">habr.com: How JavaScript Works? (part 4)</a>
 				<a href="https://hackernoon.com/understanding-js-the-event-loop-959beae3ac40" target="_blank">Understanding JS: The Event Loop</a>
 				<aside class="notes">
 					As a conclusion, it can be said that it is important to understand the internal features of the implementation of asynchronous operations in JavaScript and actively use them in writing programs. After all, the main task of any developer is to create a convenient, understandable, and most importantly, fast user interface.
@@ -314,7 +315,7 @@
 			
 			setInterval(function() {
 			  if (ELExample.classList[0] === 'present') {
-					rotateEL();
+					// rotateEL();
 			  }
 			}, 200);
 
@@ -330,7 +331,7 @@
 
 			setInterval(function() {
 			  if (ELExample.classList[0] === 'present') {
-					rotateClockHand();
+					// rotateClockHand();
 			  }
 			}, 400);
 		</script>
