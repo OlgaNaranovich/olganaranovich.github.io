@@ -1,0 +1,354 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>reveal.js</title>
+
+	<link rel="stylesheet" href="css/reveal.css">
+	<link rel="stylesheet" href="css/theme/night.css">
+
+	<!-- Theme used for syntax highlighting of code -->
+	<link rel="stylesheet" href="lib/css/zenburn.css">
+
+	<!-- Printing and PDF exports -->
+	<script>
+		var link = document.createElement( 'link' );
+		link.rel = 'stylesheet';
+		link.type = 'text/css';
+		link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+		document.getElementsByTagName( 'head' )[0].appendChild( link );
+	</script>
+</head>
+<body>
+	<div class="reveal">
+		<div class="slides">
+			<section data-background-image="./img/Loop-bg.png">
+				<h1>Event Loop</h1>
+				<p>in the JavaScript</p>
+				<span class="fragment fade-up quote">“ JavaScript, unlike a lot of other languages, never blocks.”- <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/EventLoop">MDN web docs</a></span>
+				<aside class="notes">
+					Hello, my name is Olga Naranovich. My presentation is devoted to Event Loop. But before we talk about the event loop we need to understand  how the JS’s engine works, what happens when JavaScript is executed and what role the event loop plays in JS’s execution.
+					Javascript is capable of Asynchronous operations through the single thread of execution. This means that an event such as a database request can be performed and while the request is being performed other events can still be performed such as a user scrolling or entering data. This is unlike most other languages, which will require the callback to return with its response before executing any following code.
+				</aside>
+			</section>
+			<section>
+				<h2>JS is a single-threaded </h2>
+				<p>programming language</p>
+				<span class="fragment fade-in singlethread">One thread </span>
+				<span class="fragment fade-in singlethread">== one call stack </span> 
+				<span class="fragment fade-in singlethread">== one thing at a time</span> 
+				<aside class="notes">
+					But we know that JS is a single-threaded programming language. So if it has a one thread, that means it has single Callstack and can do one thing at a time.
+				</aside>
+			</section>
+			<section>
+				<figure class="v8">
+					<figcaption>JS runtime engine (v8)</figcaption>
+					<img src="img/component-js.png" alt="js">
+				</figure>
+				<aside class="notes">
+					Widely known JS engine is v8 from Google. The engine v8 or the other ones in the other browsers basically is entirely made up of two pieces: Heap and Callstack.
+					Objects are allocated in a heap which is just a name to denote a large mostly unstructured region of memory.
+					Function calls form a stack of frames.
+				</aside>
+			</section>
+			<section>
+				<section>
+					<h3>example</h3>
+					<aside class="notes">More we can see in the following example.</aside>
+				</section>
+				<section>
+					<div class="code1-wrapper">
+						<h3>Code</h3>
+						<pre class="code1">
+							<code data-trim class="hljs javascript">
+								end = (n) => {
+								return n + '!';
+								}
+								foo = (b) => {
+								let a = 'Rolling';
+								return end(a + b);
+								}
+								bar = (x) => {
+								let y = 'School';
+								return foo(x + y);
+								}
+								console.log(bar(' Scopes '));
+							</code>
+							<div class="codeBorder-wrap">
+								<div class="codeBorder1 fragment fade-in function" data-fragment-index="3">
+									<div class="codeBorder codeBorder1 fragment fade-out" data-fragment-index="4"></div>
+								</div>
+								<div class="codeBorder2 fragment fade-in function" data-fragment-index="2">
+									<div class="codeBorder codeBorder2 fragment fade-out" data-fragment-index="5"></div>
+								</div>
+								<div class="codeBorder3 fragment fade-in function" data-fragment-index="1">
+									<div class="codeBorder codeBorder3 fragment fade-out" data-fragment-index="6"></div>
+								</div>
+							</div>
+						</pre>
+					</div>
+					<div class="callstack-wrapper">
+						<h3>Callstack</h3>
+						<div class="frame callstack1">
+							<div class="fragment fade-in function" data-fragment-index="3">
+								<div class="fragment fade-out" data-fragment-index="4">end()</div>
+							</div>
+							<div class="fragment fade-in function" data-fragment-index="2">
+								<div class="fragment fade-out" data-fragment-index="5">foo()</div>
+							</div>
+							<div class="fragment fade-in function" data-fragment-index="1">
+								<div class="fragment fade-out" data-fragment-index="6">bar()</div>
+							</div>
+						</div>
+					</div>
+					<aside class="notes">
+						Every time a function needs to be executed in Javascript, it's added to the stack. If that function calls another function within it then that function is added to the top of the stack and so on. When the function has finished its execution it's removed from the Callstack. And so on until the stack is empty. So the browser engine executes Javascript in one thread. He cannot pause the event processing, switch to another event, and then resume the execution of the first one. All events are processed sequentially and each - to the bitter end.
+						But what if we make a request or put a timeout on something or have any other function that needs a lot of time to be executed?
+					</aside>
+				</section>
+			</section>
+			<section>
+				<img class="browser-blocked" src="img/giphy (1).webp" alt="Browser is blocked">
+				<aside class="notes">
+					In theory that should freeze the entire browser until it's executed. This means that the browser will not be able to display anything on the screen, or execute any other code. It just will stop.
+					The solution is to use asynchronous callback functions. But how is asynchrony possible in single-threaded language?
+				</aside>
+			</section>
+			<section>
+				<div class="browser-component">
+					<figure class="js">
+						<figcaption>JS runtime engine</figcaption>
+						<img src="img/component-js.png" alt="js">
+					</figure>
+					<figure class="fragment fade-in webapi">
+						<figcaption>web APIs</figcaption>
+						<img src="img/component-webAPIs.png" alt="webAPI">
+					</figure>
+					<figure class="fragment fade-in queue">
+						<figcaption>Callback queue</figcaption>
+						<img src="img/component-queue.png" alt="queue">
+					</figure>
+					<figure class="fragment fade-in eloop">
+						<figcaption>Event loop</figcaption>
+						<img src="img/component-eloop.png" alt="eloop">
+					</figure>
+					<img src="img/yellow-arrow.png" alt="arrow" class="fragment fade-in arrow1">
+					<img src="img/green-arrow.png" alt="arrow" class="fragment fade-in arrow2">
+					<img src="img/blue-arrow.png" alt="arrow" class="fragment fade-in arrow3">
+				</div>
+				<!-- <img src="img/components.png" alt="Components in a browser"> -->
+				<aside class="notes">
+				 	The short answer is that the asynchronous behavior is not a part of the JavaScript language itself. Rather they are built on top of the core JavaScript language in the browser, when there’re web APIs, a callback queue, and an event loop. So, if we make a request or put a timeout on something or work with DOM events we will do it via callback functions. Every time we call functions mentioned above — they are added to the Callback queue.
+					A Callback queue is a list of messages to process. Each message has an associated function that is called to process the message. But you somehow need to send them to the Callstack. The event loop is responsible for this. 
+					This is a constantly running process that checks if the Call stack is empty. If there is something in the Callback queue that is waiting it is moved to the Call stack. If not, then nothing happens.
+				</aside>
+			</section>
+			<section id	='ELExample'>
+				<div class="leftPart">
+					<pre class="code2">
+						<code data-trim class="hljs javascript">
+							console.log('This is how');
+							setTimeout(function cb(){
+								&nbsp; &nbsp;console.log('works');
+							}, 5000);
+							console.log('event loop');
+						</code>
+						<div class="codeBorder-wrap">
+							<div class="codeBorder4 fragment fade-in function" data-fragment-index="1">
+								<div class="codeBorder codeBorder4 fragment fade-out" data-fragment-index="2"></div>
+							</div>
+							<div class="codeBorder5 fragment fade-in function" data-fragment-index="3">
+								<div class="codeBorder codeBorder5 fragment fade-out" data-fragment-index="4"></div>
+							</div>
+							<div class="codeBorder6 fragment fade-in function" data-fragment-index="5">
+								<div class="codeBorder codeBorder6 fragment fade-out" data-fragment-index="6"></div>
+							</div>
+							<div class="codeBorder7 fragment fade-in function" data-fragment-index="8">
+								<div class="codeBorder codeBorder7 fragment fade-out" data-fragment-index="11"></div>
+							</div>
+							<div class="codeBorder8 fragment fade-in function" data-fragment-index="9">
+								<div class="codeBorder codeBorder8 fragment fade-out" data-fragment-index="10"></div>
+							</div>
+						</div>
+					</pre>
+					<div class="frame console">
+						<h4>console</h4>
+						<div class="console-result">
+							<span class="fragment fade-in" data-fragment-index="2">This is how</span>
+							<span class="fragment fade-in" data-fragment-index="6">event loop</span>
+							<span class="fragment fade-in" data-fragment-index="10">works</span>
+						</div>
+					</div>
+				</div>
+				<div class="rightPart">
+					<div class="stackWebapis-wrapper">	
+						<div class="frame callstack2">
+							<h4>callstack</h4>
+							<span class="fragment fade-in function" data-fragment-index="5">
+								<span class="fragment fade-out" data-fragment-index="6">log('event loop')</span>
+							</span>
+							<span class="fragment fade-in function" data-fragment-index="3">
+								<span class="fragment fade-out" data-fragment-index="4">setTimeout(cb)</span>
+							</span>
+							<span class="fragment fade-in function" data-fragment-index="1">
+								<span class="fragment fade-out" data-fragment-index="2">log('This is how')</span>
+							</span>
+							<span class="fragment fade-in function" data-fragment-index="8">
+								<span class="fragment fade-out" data-fragment-index="11">cb()</span>
+							</span>
+							<span class="fragment fade-in function lastFunc" data-fragment-index="9">
+								<span class="fragment fade-out" data-fragment-index="10">log('works')</span>
+							</span>
+						</div>
+						<div class="frame webapis">
+							<h4>webapis</h4>
+							<span class="fragment fade-in function" data-fragment-index="4">
+								<span class="fragment fade-out" data-fragment-index="7">timer(&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;) cb()</span>
+							</span>
+							<span class="fragment fade-in clockParent" data-fragment-index="4">
+								<span class="fragment fade-out clock" data-fragment-index="7">
+									<img src="img/clock-white.png">
+									<span class="clockHand"></span>
+								</span>
+							</span>
+						</div>
+					</div>
+					<figure class="eloop" id="eloop">
+						<figcaption>Event loop</figcaption>
+						<img id="eloop-img" src="img/eloop-white.png" alt="eloop">
+					</figure>
+					<div class="frame queue2">
+						<h4>callback queue</h4>
+						<span class="fragment fade-in" data-fragment-index="7">
+							<span class="cbFunc fragment fade-out" data-fragment-index="8">cb()</span>
+						</span>
+					</div>
+				</div>
+				<aside class="notes">
+					Let's have a look at the execution of such code in the browser. So, we run the console.log code and immediately see the result in the console. The next function is setTimeout, what happens to her? We pass this function with callback, its name is cb, the second argument is the delay value. SetTimeout is what we are provided by the browser, it's not in the JS engine. At this moment the browser starts the timer, and the countdown is actually performed in parallel to the engine. Therefore, the stack can remove the execution of this function to call the next one. This is what this console.log is. 
+					And now with a clean callcstack, we have something running in API. When the API ends its work after 5s, the callback will move to the callback queue. And now it's time for the event loop. As soon as a task appears in the queue, it checks if the stack is clean. And if it is empty, it moves the first task in the queue there. The task is immediately executed. 
+				</aside>
+			</section>
+			<section>
+				<section>
+					<pre>
+						<code data-trim class="hljs javascript">
+							console.log('This is how');
+							setTimeout(function cb(){
+								&nbsp; &nbsp;console.log('works');
+							}, 0);
+							console.log('event loop');
+						</code>
+					</pre>
+					<aside class="notes">
+						Let's have a look at some more examples when using the event loop. This example differs from the previous one that it have delay argument as 0. This technique is used when you need to schedule something right after the execution of the main code.
+					</aside>
+				</section>
+				<section>
+					<pre>
+						<code data-trim class="hljs javascript">
+							console.log('You got');
+							$.get('url', function cb(data){
+								&nbsp; &nbsp;console.log(data);
+							});
+							console.log('an answer:');
+						</code>
+					</pre>
+					<aside class="notes">
+						This is a general scheme for all asynchronous requests. For example, AJAX requests or processing DOM events work exactly the same. In this example we will receive a XHR response after the execution of the main code. 
+					</aside>
+				</section>
+				<section>
+					<pre>
+						<code data-trim class="hljs javascript">
+							const ELExample = document.querySelector('#ELExample');
+							const img = document.querySelector('#eloop-img');
+							let angle = 0;
+							rotateEL = () => {setTimeout(() => {
+									angle +=32;
+									angle = angle > 360 ? angle - 360 : angle;
+									img.style.transform = `rotate(${angle}deg)`;
+								}, 0
+							)};
+							setInterval(function() {
+							  if (ELExample.classList[0] === 'present') {
+									rotateEL();
+							  }
+							}, 200);
+						</code>
+					</pre>
+					<aside class="notes">
+						And for example, this code is from this presentation. It starts the animation of the icon event loop under certain conditions. 
+					</aside>
+				</section>
+			</section>
+			<section>
+				<h3>Useful links</h3>
+				<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/EventLoop" target="_blank">MDN, Concurrency model and Event Loop</a>
+				<a href="https://www.youtube.com/watch?v=8aGhZQkoFbQ" target="_blank">Philip Roberts: What the heck is the event loop anyway?</a>
+				<a href="https://codeburst.io/what-you-need-to-know-about-the-javascript-event-loop-ee3fc32e59c1" target="_blank">What you need to know about the Javascript event loop?</a>
+				<a href="https://habr.com/company/ruvds/blog/337042/" target="_blank">habr: How JavaScript Works? (part 1)</a>
+				<a href="https://habr.com/company/ruvds/blog/340508/" target="_blank">habr: How JavaScript Works? (part 4)</a>
+				<a href="https://hackernoon.com/understanding-js-the-event-loop-959beae3ac40" target="_blank">Understanding JS: The Event Loop</a>
+				<aside class="notes">
+					As a conclusion, it can be said that it is important to understand the internal features of the implementation of asynchronous operations in JavaScript and actively use them in writing programs. After all, the main task of any developer is to create a convenient, understandable, and most importantly, fast user interface.
+				</aside>
+			</section>
+		</div>
+		</div>
+
+		<script>
+			const ELExample = document.querySelector('#ELExample');
+			const img = document.querySelector('#eloop-img');
+			let angle = 0;
+
+			rotateEL = () => {setTimeout(() => {
+					angle +=32;
+					angle = angle > 360 ? angle - 360 : angle;
+					img.style.transform = `rotate(${angle}deg)`;
+				}, 0
+			)};
+			
+			setInterval(function() {
+			  if (ELExample.classList[0] === 'present') {
+					rotateEL();
+			  }
+			}, 200);
+
+			const clockHand = document.querySelector('.clockHand');
+			const clockParent = document.querySelector('clockParent');
+			let angle2 = 0;
+			rotateClockHand = () => {setTimeout(() => {
+					angle2 +=8;
+					angle2 = angle2 > 360 ? angle2 - 360 : angle2;
+					clockHand.style.transform = `rotate(${angle2}deg)`;
+				}, 0
+			)};
+
+			setInterval(function() {
+			  if (ELExample.classList[0] === 'present') {
+					rotateClockHand();
+			  }
+			}, 400);
+		</script>
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+					// More info about config & dependencies:
+					// - https://github.com/hakimel/reveal.js#configuration
+					// - https://github.com/hakimel/reveal.js#dependencies
+					Reveal.initialize({
+						dependencies: [
+						{ src: 'plugin/markdown/marked.js' },
+						{ src: 'plugin/markdown/markdown.js' },
+						{ src: 'plugin/notes/notes.js', async: true },
+						{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+						]
+					});
+		</script>
+	</body>
+	</html>
