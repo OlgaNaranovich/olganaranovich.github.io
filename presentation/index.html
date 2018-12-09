@@ -141,7 +141,7 @@
 					<img src="img/blue-arrow.png" alt="arrow" class="fragment fade-in arrow3">
 				</div>
 				<aside class="notes">
-				 	The short answer is that the asynchronous behavior is not a part of the JavaScript language itself. Rather they are built on top of the core JavaScript language in the browser, when there’re web APIs, a callback queue, and an event loop. So, if we make a request or put a timeout on something or work with DOM events we will do it via callback functions. Every time we call functions mentioned above — they are added to the Callback queue.
+				 	The short answer is that the asynchronous behavior is not a part of the JavaScript language itself. Rather they are built on top of the core JavaScript language in the browser, when there’re web APIs, a callback queue, and an event loop. So, if we make a request or put a timeout on something or work with DOM events we will do it via callback functions. Every time we call functions mentioned above — they are processed in API and then added to the Callback queue.
 					A Callback queue is a list of messages to process. Each message has an associated function that is called to process the message. But you somehow need to send them to the Callstack. The event loop is responsible for this. 
 					This is a constantly running process that checks if the Call stack is empty. If there is something in the Callback queue that is waiting it is moved to the Call stack. If not, then nothing happens.
 				</aside>
@@ -228,7 +228,7 @@
 					</div>
 				</div>
 				<aside class="notes">
-					Let's have a look at the execution of such code in the browser. So, we run the console.log code and immediately see the result in the console. The next function is setTimeout, what happens to her? We pass this function with callback, its name is cb, the second argument is the delay value. SetTimeout is what we are provided by the browser, it's not in the JS engine. At this moment the browser starts the timer, and the countdown is actually performed in parallel to the engine. Therefore, the stack can remove the execution of this function to call the next one. This is what this console.log is. 
+					Let's have a look at the execution of such code in the browser. So, we run the console.log code and immediately see the result in the console. The next function is setTimeout, what happens to it? We pass this function with callback, its name is cb, the second argument is the delay value. SetTimeout is what we are provided by the browser, it's not in the JS engine. At this moment the browser starts the timer, and the countdown is actually performed in parallel to the engine. Therefore, the stack can remove the execution of this function to call the next one. This is what this console.log is. 
 					And now with a clean callcstack, we have something running in API. When the API ends its work after 5s, the callback will move to the callback queue. And now it's time for the event loop. As soon as a task appears in the queue, it checks if the stack is clean. And if it is empty, it moves the first task in the queue there. The task is immediately executed. 
 				</aside>
 			</section>
@@ -281,7 +281,7 @@
 						</code>
 					</pre>
 					<aside class="notes">
-						And for example, this code is from this presentation. It starts the animation of the icon event loop under certain conditions. 
+						And for example, this code is from this presentation. It starts the animation of the icon event loop under certain conditions using setTimeout and setInterval. 
 					</aside>
 				</section>
 			</section>
@@ -295,6 +295,7 @@
 				<a href="https://hackernoon.com/understanding-js-the-event-loop-959beae3ac40" target="_blank">Understanding JS: The Event Loop</a>
 				<aside class="notes">
 					As a conclusion, it can be said that it is important to understand the internal features of the implementation of asynchronous operations in JavaScript and actively use them in writing programs. After all, the main task of any developer is to create a convenient, understandable and, what is most important, fast user interface.
+					Thanks for watching.
 				</aside>
 			</section>
 		</div>
