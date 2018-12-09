@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-	<title>reveal.js</title>
+	<title>Event Loop</title>
 
 	<link rel="stylesheet" href="css/reveal.css">
 	<link rel="stylesheet" href="css/main.css">
@@ -140,7 +140,6 @@
 					<img src="img/green-arrow.png" alt="arrow" class="fragment fade-in arrow2">
 					<img src="img/blue-arrow.png" alt="arrow" class="fragment fade-in arrow3">
 				</div>
-				<!-- <img src="img/components.png" alt="Components in a browser"> -->
 				<aside class="notes">
 				 	The short answer is that the asynchronous behavior is not a part of the JavaScript language itself. Rather they are built on top of the core JavaScript language in the browser, when there’re web APIs, a callback queue, and an event loop. So, if we make a request or put a timeout on something or work with DOM events we will do it via callback functions. Every time we call functions mentioned above — they are added to the Callback queue.
 					A Callback queue is a list of messages to process. Each message has an associated function that is called to process the message. But you somehow need to send them to the Callstack. The event loop is responsible for this. 
@@ -245,7 +244,7 @@
 						</code>
 					</pre>
 					<aside class="notes">
-						Let's have a look at some more examples when using the event loop. This example differs from the previous one that it have delay argument as 0. This technique is used when you need to schedule something right after the execution of the main code.
+						Let's have a look at some more examples when the event loop is used. This example differs from the previous one only because it has the delay argument as 0. This technique is used when you need to schedule something right after the execution of the main code.
 					</aside>
 				</section>
 				<section>
@@ -259,7 +258,7 @@
 						</code>
 					</pre>
 					<aside class="notes">
-						This is a general scheme for all asynchronous requests. For example, AJAX requests or processing DOM events work exactly the same. In this example we will receive a XHR response after the execution of the main code. 
+						This is a general scheme for all asynchronous requests. For example, AJAX requests or processing DOM events work exactly in the same way. In this example we will receive a XHR response after the execution of the main code. 
 					</aside>
 				</section>
 				<section>
@@ -295,7 +294,7 @@
 				<a href="https://habr.com/company/ruvds/blog/340508/" target="_blank">habr.com: How JavaScript Works? (part 4)</a>
 				<a href="https://hackernoon.com/understanding-js-the-event-loop-959beae3ac40" target="_blank">Understanding JS: The Event Loop</a>
 				<aside class="notes">
-					As a conclusion, it can be said that it is important to understand the internal features of the implementation of asynchronous operations in JavaScript and actively use them in writing programs. After all, the main task of any developer is to create a convenient, understandable, and most importantly, fast user interface.
+					As a conclusion, it can be said that it is important to understand the internal features of the implementation of asynchronous operations in JavaScript and actively use them in writing programs. After all, the main task of any developer is to create a convenient, understandable and, what is most important, fast user interface.
 				</aside>
 			</section>
 		</div>
@@ -315,7 +314,7 @@
 			
 			setInterval(function() {
 			  if (ELExample.classList[0] === 'present') {
-					// rotateEL();
+					rotateEL();
 			  }
 			}, 200);
 
@@ -331,7 +330,7 @@
 
 			setInterval(function() {
 			  if (ELExample.classList[0] === 'present') {
-					// rotateClockHand();
+					rotateClockHand();
 			  }
 			}, 400);
 		</script>
