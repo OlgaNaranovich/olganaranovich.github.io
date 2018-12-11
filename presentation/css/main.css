@@ -155,32 +155,32 @@ body .reveal section img {
 .reveal .leftPart .codeBorder4 {
   height: 30px;
   top: 26px;
-  width: 75%;
+  width: 80%;
 }
 
 .reveal .leftPart .codeBorder5 {
   height: 80px;
   top: 57px;
-  width: 90%;
+  width: 97%;
 }
 
 .reveal .leftPart .codeBorder6 {
 	height: 26px;
   top: 138px;
-  width: 75%;
+  width: 77%;
 }
 
 .reveal .leftPart .codeBorder7 {
   top: 57px;
   height: 55px;
-  width: 59%;
+  width: 65%;
   left: 138px;
 }
 
 .reveal .leftPart .codeBorder8 {
   top: 87px;
   height: 25px;
-  width: 56%;
+  width: 64%;
   left: 138px;
 }
 
@@ -260,11 +260,7 @@ body .reveal section img {
 	width: 2px;
 	height: 15px;
 	background-color: #fff;
-	-webkit-transform-origin-y: 100%;
-	-moz-transform-origin-y: 100%;
-	-ms-transform-origin-y: 100%;
-	-o-transform-origin-y: 100%;
-	transform-origin-y: 100%;
+	transform-origin: 0 100%;
 	-webkit-transform: rotate(0deg);
 	-ms-transform: rotate(0deg);
 	-o-transform: rotate(0deg);
