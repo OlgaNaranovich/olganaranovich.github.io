@@ -1,0 +1,67 @@
+$text-color: #4e4e4e
+$color-light: #d4d7bc
+$color-blue: #0c5886
+$color-rose: #f3198a
+$color-green: #55aa44
+$color-green-dark: #19480f
+$trs: all .2s ease
+
+
+@mixin background ($property)
+  background: url($property) no-repeat center
+
+%bg-section
+  width: 100%
+  min-height: 90vh
+  font-size: 0
+  position: relative
+  background-color: rgba(#ffe2e4, .4)
+  border-top: 1px solid $color-blue
+%transparent-BG-by-before
+  content: ''
+  position: absolute
+  top: 0
+  left: 0
+  right: 0
+  bottom: 0
+  +background ('../img/bg1.png')
+  -webkit-background-size: cover
+  background-size: cover
+  opacity: .4
+  z-index: -1
+
+%spells-span
+  font-weight: 600
+  padding: 0 4px
+
+%centerElement-in-position-absolute
+  top: 50%
+  left: 50%
+  -webkit-transform: translate(-50%, -50%)
+  -moz-transform: translate(-50%, -50%)
+  -ms-transform: translate(-50%, -50%)
+  -o-transform: translate(-50%, -50%)
+  transform: translate(-50%, -50%)
+
+.button
+  border-radius: 2px
+  border: none
+  background-color: #fff
+  font-size: 15px
+  font-weight: bold
+  text-transform: uppercase
+  padding: 7px 15px
+  cursor: pointer
+  margin: 10px 8px
+  -webkit-transition: $trs
+  -moz-transition: $trs
+  -o-transition: $trs
+  transition: $trs
+  &:hover
+    background-color: #ededed
+  &:focus
+    outline: none
+.button-success
+  color: #336688
+.button-cancel
+  color: #dd4433
