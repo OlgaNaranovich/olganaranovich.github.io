@@ -148,7 +148,8 @@ body main .rules__content-item span:nth-child(1), body main .rules__content-item
     .setupOfHero .princess__result {
       height: 100%;
       min-width: 220px;
-      border-right: 1px solid #ffffff; }
+      border-right: 1px solid #ffffff;
+      text-align: left; }
       .setupOfHero .princess__result span {
         background-color: rgba(212, 215, 188, 0.5);
         width: 99%;
@@ -157,51 +158,58 @@ body main .rules__content-item span:nth-child(1), body main .rules__content-item
         font-size: 1.2em;
         color: #4e4e4e; }
       .setupOfHero .princess__result-img {
-        position: relative; }
+        position: relative;
+        display: inline-block; }
         .setupOfHero .princess__result-img .dress {
           position: absolute;
-          top: 108px;
-          left: 25px; }
+          top: 106px;
+          left: 11px; }
         .setupOfHero .princess__result-img .face {
           position: absolute;
           top: 0;
           left: 0; }
         .setupOfHero .princess__result-img .hair {
           position: absolute;
-          top: 5px;
-          left: 28px; }
+          top: -10px;
+          left: -8px; }
     .setupOfHero .princess__setup {
       overflow: hidden;
       position: relative; }
       .setupOfHero .princess__setup img {
         cursor: pointer;
+        float: left; }
+      .setupOfHero .princess__setup-hair, .setupOfHero .princess__setup-dress {
         position: relative;
-        left: 1px; }
-      .setupOfHero .princess__setup-hair {
-        padding-bottom: 15px;
-        width: 565px; }
+        left: 0;
+        padding: 15px 0;
+        -webkit-transition: all 0.2s ease;
+        -moz-transition: all 0.2s ease;
+        -o-transition: all 0.2s ease;
+        transition: all 0.2s ease; }
+        .setupOfHero .princess__setup-hair::after, .setupOfHero .princess__setup-dress::after {
+          content: "";
+          display: block;
+          clear: both; }
       .setupOfHero .princess__setup-dress {
-        padding-top: 15px;
         border-top: 1px solid #ffffff; }
-      .setupOfHero .princess__setup-arrow {
-        position: relative; }
-        .setupOfHero .princess__setup-arrow .prev, .setupOfHero .princess__setup-arrow .next {
-          width: 0;
-          height: 0;
-          position: absolute;
-          border-top: 10px solid transparent;
-          border-bottom: 10px solid transparent;
-          top: 35px;
-          cursor: pointer;
-          padding: 0 10px;
-          z-index: 10; }
-        .setupOfHero .princess__setup-arrow .prev {
-          border-right: 10px solid #fff0d9; }
-        .setupOfHero .princess__setup-arrow .next {
-          border-left: 10px solid #fff0d9;
-          right: 0; }
-      .setupOfHero .princess__setup .princess__setup-arrow--hair .next {
-        right: 190px; }
+      .setupOfHero .princess__setup-arrow .prev, .setupOfHero .princess__setup-arrow .next {
+        width: 0;
+        height: 0;
+        position: absolute;
+        border-top: 10px solid transparent;
+        border-bottom: 10px solid transparent;
+        top: 15%;
+        cursor: pointer;
+        padding: 0 5px;
+        z-index: 10;
+        opacity: 1; }
+      .setupOfHero .princess__setup-arrow .prev {
+        border-right: 10px solid #fff0d9; }
+      .setupOfHero .princess__setup-arrow .next {
+        border-left: 10px solid #fff0d9;
+        right: 0; }
+      .setupOfHero .princess__setup .princess__setup-arrow--dress .prev, .setupOfHero .princess__setup .princess__setup-arrow--dress .next {
+        top: 60%; }
 
 body main .rules, body main .screenshots {
   width: 100%;
