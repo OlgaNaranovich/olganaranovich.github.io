@@ -28,16 +28,3 @@ showWidgets.addEventListener('click', function() {
 		main.classList.remove('hidden');
 	}
 });
-(function() {
-    let ajaxSampler = new XMLHttpRequest();
-    ajaxSampler.open("GET", "img/svg/sampler-icon.svg", true);
-    ajaxSampler.send();
-
-    ajaxSampler.onload = function(e) {
-        let parser = new DOMParser();
-        console.log(parser);
-        let ajaxSamplerDoc = parser.parseFromString( ajaxSampler.responseText, "image/svg+xml" );
-        document.getElementsByTagName('body')[0].appendChild( ajaxSamplerDoc.getElementsByTagName('svg')[0]);
-}
-
-})();
