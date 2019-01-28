@@ -5,7 +5,7 @@ function toggleMenu() {
 		toggleMnu.classList.add('on');
 	} else
 		toggleMnu.classList.remove('on');
-		
+
 	if (!folderTree.classList.contains('show-folderTree')) {
 		folderTree.classList.add('show-folderTree');
 		console.log(folderTree);
@@ -28,9 +28,16 @@ showWidgets.addEventListener('click', function() {
 		main.classList.remove('hidden');
 	}
 });
+(function() {
+    let ajaxSampler = new XMLHttpRequest();
+    ajaxSampler.open("GET", "img/sampler-icon.svg", true);
+    ajaxSampler.send();
 
-$(document).ready(function() {
-  $('select').niceSelect();
-});
+    ajaxSampler.onload = function(e) {
+        let parser = new DOMParser();
+        console.log(parser);
+        let ajaxSamplerDoc = parser.parseFromString( ajaxSampler.responseText, "image/svg+xml" );
+        document.getElementsByTagName('body')[0].appendChild( ajaxSamplerDoc.getElementsByTagName('svg')[0] );
+}
 
-
+})();
