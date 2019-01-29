@@ -28,3 +28,7 @@ showWidgets.addEventListener('click', function() {
 		main.classList.remove('hidden');
 	}
 });
+
+$(document).ready(function() {
+    $('select').niceSelect();
+});
