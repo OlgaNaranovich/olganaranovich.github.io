@@ -303,13 +303,14 @@ main {
     width: 280px;
     height: 50px;
     background-color: #2f3b4c; }
-    .header__logo h1 a {
-      font-family: "Roboto Bold", "Helvetica", sans-serif;
-      font-weight: bold;
-      text-transform: uppercase;
-      color: #ffffff;
-      font-size: 27px;
-      padding: 10px 35px; }
+    .header__logo h1 {
+      margin: 5px 35px; }
+      .header__logo h1 a {
+        font-family: "Roboto Bold", "Helvetica", sans-serif;
+        font-weight: bold;
+        text-transform: uppercase;
+        color: #ffffff;
+        font-size: 1.7rem; }
   .header__content {
     justify-content: space-between;
     width: 85%; }
@@ -623,7 +624,11 @@ main {
   .widgets__quatPamp h4:before {
     background-color: yellow; }
   .widgets__quatPamp-content {
-    position: relative; }
+    position: relative;
+    height: 53%;
+    text-align: center; }
+    .widgets__quatPamp-content .quatPamp__img {
+      height: 100%; }
     .widgets__quatPamp-content .quatPamp-bottle1 {
       position: absolute;
       top: 33px;
@@ -632,19 +637,19 @@ main {
       position: absolute;
       top: 33px;
       left: 60px; }
-    .widgets__quatPamp-content span {
+    .widgets__quatPamp-content .bottle1__name, .widgets__quatPamp-content .bottle2__name {
       position: absolute;
       font-size: 0.9em;
       top: 65px;
       left: 34px; }
-    .widgets__quatPamp-content .second-span {
+    .widgets__quatPamp-content .bottle2__name {
       left: 72px; }
-    .widgets__quatPamp-content small {
+    .widgets__quatPamp-content .bottle1__filling, .widgets__quatPamp-content .bottle2__filling {
       font-size: 0.6em;
       position: absolute;
       top: 91px;
       left: 32px; }
-    .widgets__quatPamp-content .second-small {
+    .widgets__quatPamp-content .bottle2__filling {
       left: 63px; }
     .widgets__quatPamp-content .canvas {
       display: none; }
@@ -652,11 +657,9 @@ main {
       position: absolute;
       top: 56px;
       right: 20px; }
-    .widgets__quatPamp-content p {
+    .widgets__quatPamp-content .quatPamp__indicator {
       font-size: 0.8em;
-      margin: 0 0 10px;
-      text-align: center;
-      line-height: 0px; }
+      margin-left: 10px; }
 
 .main {
   position: relative;
