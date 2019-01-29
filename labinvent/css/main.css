@@ -626,11 +626,11 @@ main {
     position: relative; }
     .widgets__quatPamp-content .quatPamp-bottle1 {
       position: absolute;
-      top: 35px;
+      top: 33px;
       left: 20px; }
     .widgets__quatPamp-content .quatPamp-bottle2 {
       position: absolute;
-      top: 35px;
+      top: 33px;
       left: 60px; }
     .widgets__quatPamp-content span {
       position: absolute;
@@ -650,7 +650,7 @@ main {
       display: none; }
     .widgets__quatPamp-content .quatPamp-3 {
       position: absolute;
-      top: 38%;
+      top: 56px;
       right: 20px; }
     .widgets__quatPamp-content p {
       font-size: 0.8em;
