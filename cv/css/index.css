@@ -135,6 +135,7 @@ h3 {
 
 .about .text-wrapper .github a{
 	color: #444444;
+	word-break: break-word;
 }
 
 .about img {
