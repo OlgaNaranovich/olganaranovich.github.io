@@ -96,10 +96,6 @@ h3 {
 	cursor: pointer;
 }
 
-.nav {
-	margin-bottom: 0;
-}
-
 .nav ul {
 	display: flex;
 	justify-content: space-around;

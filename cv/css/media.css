@@ -1,6 +1,7 @@
 @media screen and (max-width: 768px) {
 	.nav {
 		margin-top: -200px;
+		margin-bottom: 0;
 		transition: all .2s ease;
 	}
 
