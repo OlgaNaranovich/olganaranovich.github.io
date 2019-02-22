@@ -12,8 +12,8 @@ $(document).ready(() => {
     nav: true,
     dots: false,
     smartSpeed: 1000,
-    autoplay: true,
-    autoplayTimeout: 4000,
+    autoplay: false,
+    autoplayTimeout: 5000,
     touchDrag: true,
     autoplayHoverPause: true,
     responsive: {
@@ -23,7 +23,7 @@ $(document).ready(() => {
       600: {
         items: 2,
       },
-      1000: {
+      992: {
         items: 3,
       },
     },
@@ -61,6 +61,7 @@ $(document).ready(function() {
 });
 
 const body = document.querySelector('.body');
+const header = document.querySelector('.header');
 const navList = document.querySelector('.nav__list');
 const toggleMenu = document.querySelector('.toggle-menu');
 const nav = document.querySelector('.nav');
@@ -76,3 +77,4 @@ nav.addEventListener('click', function() {
     console.log(navList);
   }
 });
+console.log(header.offsetHeight);
